@@ -11,7 +11,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 #1 Clone Repository
 
 ```bash
-git clone https://github.com/FarhanRiuzaki/laravel-base.git
+git clone https://github.com/FarhanRiuzaki/laravel-base-v2.git
 cp .env.example .env
 ```
 #2 Open .ENV
