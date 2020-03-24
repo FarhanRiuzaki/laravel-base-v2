@@ -1,0 +1,132 @@
+// :root {
+//     --main-bg: #1e1e2d;
+//     --main-icon: #fff;
+//     --main-master-color: #fff;
+//     --main-header: #1a1a27;
+//     --main-color: #fff;
+//   }
+
+  :root[theme='dark'] {
+    --main-bg: #1e1e2d;
+    --main-icon: #fff;
+    --main-master-color: #fff;
+    --main-header: #1a1a27;
+    --main-color: #fff;
+  }
+
+  :root[theme='light'] {
+    --main-bg: #fff;
+    --main-icon: #565656;
+    --main-header: #fff;
+    --main-master-color: #000;
+    --main-color: #fff;
+  }
+.sidebar-nav #sidebarnav .sidebar-item.selected > .sidebar-link {
+    border-radius: 4px;
+    color: #fff !important;
+    height: 42px;
+    margin-left: 15px !important;
+    // background: linear-gradient(to right, #8971ea, #7f72ea, #7574ea, #6a75e9, #5f76e8);
+    background: linear-gradient(118deg, rgb(115, 103, 240), rgba(115, 103, 240, 0.7));
+    // box-shadow: 0px 7px 12px 0px rgba(95, 118, 232, 0.21);
+    box-shadow: rgba(115, 103, 240, 0.7) 0px 0px 10px 1px;
+    opacity: 1; 
+    padding: 0 0 0 22px;
+}
+
+.btn{
+    border-radius: 6px;
+}
+
+.form-control{
+    border-radius: 5px;
+    border: 1px solid #E1E5E6;
+    // border: 1px solid #e9ecef;
+}
+
+label{
+    padding-left: 5px;
+    font-size: .85rem;
+    margin-bottom: -5px;
+    // color: rgba(0,0,0,.7);
+}
+
+.page-wrapper{
+    background-color: rgb(242, 242, 242);
+    // background-color: rgb(250, 251, 253);
+}
+#main-wrapper[data-layout="vertical"] .topbar .navbar-collapse[data-navbarbg="skin6"], #main-wrapper[data-layout="vertical"] .topbar[data-navbarbg="skin6"], #main-wrapper[data-layout="horizontal"] .topbar .navbar-collapse[data-navbarbg="skin6"], #main-wrapper[data-layout="horizontal"] .topbar[data-navbarbg="skin6"]{
+    background-color: rgb(242, 242, 242, 0.9);
+    // background-color: rgb(250, 251, 253, 0.9);
+}
+
+.custom-radius{
+    border-radius: 60px;
+}
+  
+.nav-small-cap{
+    color: #999;
+}
+
+.linear-primary{
+    background: linear-gradient(118deg, rgb(115, 103, 240), rgba(115, 103, 240, 0.7));
+}
+
+.card{
+    // box-shadow: 0 4px 25px 0 rgba(0,0,0,.1);
+    box-shadow: 1px 4px 15px 0 rgba(0, 0, 0, 0.061);
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.page-wrapper > .container-fluid {
+    padding: 32px;
+}
+
+.h4, h4 {
+    font-size: 18.48px;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #2c2c2c;
+}
+.brd-icon{
+    width: 18px;
+    margin-top: -4px;
+    font-weight: 500;
+}
+
+.input-group > .input-group-prepend > .btn, .input-group > .input-group-prepend > .input-group-text, .input-group > .input-group-append:not(:last-child) > .btn, .input-group > .input-group-append:not(:last-child) > .input-group-text, .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle), .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#main-wrapper[data-layout="vertical"] .left-sidebar[data-sidebarbg="skin6"], #main-wrapper[data-layout="horizontal"] .left-sidebar[data-sidebarbg="skin6"] {
+    background: #fff;
+}
+
+
+// CUSTOM CSS
+#main-wrapper[data-layout="vertical"] .left-sidebar[data-sidebarbg="skin6"] .sidebar-nav ul .nav-small-cap, #main-wrapper[data-layout="horizontal"] .left-sidebar[data-sidebarbg="skin6"] .sidebar-nav ul .nav-small-cap{
+    color: var(--main-master-color);
+}
+
+#main-wrapper[data-layout="vertical"] .topbar .top-navbar .navbar-header[data-logobg="skin6"], #main-wrapper[data-layout="horizontal"] .topbar .top-navbar .navbar-header[data-logobg="skin6"] {
+    background: var(--main-header);
+}
+
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6], #main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] {
+    background: var(--main-bg);
+}
+
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link .feather-icon, #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i, #main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link .feather-icon, #main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i{
+    color: var(--main-icon);
+}
+
+.error{
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }
