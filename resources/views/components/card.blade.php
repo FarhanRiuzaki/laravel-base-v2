@@ -10,6 +10,12 @@
                     </a>
                 </div>
             @endif
+
+            @if (@$custom)
+                <div class="ml-auto">
+                    {{ $custom }}
+                </div>
+            @endif
         </div>
         <br>
         

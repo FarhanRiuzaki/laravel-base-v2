@@ -128,11 +128,26 @@ function fileCheck(file, size) {
     swal.fire('Oops', 'file harus berukuran kurang dari 1MB', 'info');
     file.value = '';
   }
+}
+
+function number_format(nStr) {
+  nStr += '';
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  var rgx = /(\d+)(\d{3})/;
+
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  }
+
+  return x1 + x2;
 } // deklarasi function
 
 
 window.pad = pad;
-window.fileCheck = fileCheck; // COMPONENT
+window.fileCheck = fileCheck;
+window.number_format = number_format; // COMPONENT
 
 $('.number').number(true, 2); // $('.numberOnly').number(true);
 
@@ -159,7 +174,7 @@ $('#detailList').on('hidden.bs.collapse', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/farhanriuzaki/htdocs/LARAVEL/trade-import-laravel/resources/js/custom.js */"./resources/js/custom.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\trade-export\resources\js\custom.js */"./resources/js/custom.js");
 
 
 /***/ })

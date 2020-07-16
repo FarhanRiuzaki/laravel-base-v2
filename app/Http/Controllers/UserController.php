@@ -8,6 +8,7 @@ use App\User;
 use Spatie\Permission\Models\Permission;
 use DB;
 use DataTables;
+use App\MasterBranch;
 
 class UserController extends Controller
 {
@@ -21,8 +22,9 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = Role::orderBy('name', 'ASC')->get();
-        return view('users.create', compact('roles'));
+        $branch     = MasterBranch::select(DB::raw('concat(code, " - ", name) as code_name'), 'id', 'code')->pluck('code_name', 'code');
+        $roles      = Role::orderBy('name', 'ASC')->get();
+        return view('users.create', compact('roles','branch'));
     }
 
     public function store(Request $request)
@@ -32,18 +34,20 @@ class UserController extends Controller
         }else{
             $request->status = '0';
         }
-
         $this->validate($request, [
             'name'      => 'required|string|max:100',
             'email'     => 'required|email|unique:users',
-            'password'  => 'required|min:6',
+            'username'  => 'required|unique:users',
+            'password'  => 'required|min:6|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
             'role'      => 'required|string|exists:roles,name'
-        ]);
+        ]); // Validation  Rules 
 
         $user = User::firstOrCreate([
-            'email'     => $request->email
+            'email'     => $request->email,
+            'username'  => $request->username
         ], [
             'name'      => $request->name,
+            'branch'    => $request->branch,
             'password'  => bcrypt($request->password),
             'status'    => $request->status
         ]);
@@ -54,8 +58,9 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        $branch     = MasterBranch::select(DB::raw('concat(code, " - ", name) as code_name'), 'id', 'code')->pluck('code_name', 'code');
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user','branch'));
     }
 
     public function update(Request $request, $id)
@@ -67,9 +72,9 @@ class UserController extends Controller
         }
 
         $this->validate($request, [
-            'name' => 'required|string|max:100',
-            'email' => 'required|email|exists:users,email',
-            'password' => 'nullable|min:6',
+            'name'      => 'required|string|max:100',
+            'email'     => 'required|email|exists:users,email',
+            'password'  => 'required|min:6|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
         ]);
 
         $user = User::findOrFail($id);
@@ -77,6 +82,7 @@ class UserController extends Controller
         $user->update([
             'name'      => $request->name,
             'password'  => $password,
+            'branch'    => $request->branch,
             'status'    => $request->status,
         ]);
         return redirect(route('users.index'))->with(['success' => 'User: ' . $user->name . ' Diperbaharui']);

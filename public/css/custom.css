@@ -1,3 +1,7 @@
+body {
+  font-size: 14px;
+}
+
 :root[theme=dark] {
   --main-bg: #1e1e2d;
   --main-icon: #fff;
@@ -27,11 +31,13 @@
 
 .btn {
   border-radius: 6px;
+  font-size: 15px;
 }
 
 .form-control {
   border-radius: 5px;
   border: 1px solid #E1E5E6;
+  font-size: 14px;
 }
 
 label {
@@ -143,5 +149,272 @@ h6 {
   margin-top: 0.25rem;
   font-size: 80%;
   color: #dc3545;
+}
+
+.btn.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.btn.btn-icon {
+  height: 2rem;
+  width: 2rem;
+}
+
+.btn-rounded {
+  border-radius: 2em !important;
+}
+
+.label-container {
+  position: fixed;
+  bottom: 48px;
+  right: 105px;
+  display: table;
+  visibility: hidden;
+}
+
+.label-text {
+  color: #FFF;
+  background: rgba(51, 51, 51, 0.5);
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.label-arrow {
+  display: table-cell;
+  vertical-align: middle;
+  color: #333;
+  opacity: 0.5;
+}
+
+/* *{padding:0;margin:0;} */
+
+body {
+  /* font-family:Verdana, Geneva, sans-serif;
+  background-color:#CCC;
+  font-size:12px; */
+}
+
+.label-container {
+  position: fixed;
+  bottom: 48px;
+  right: 105px;
+  display: table;
+  visibility: hidden;
+}
+
+.label-text {
+  color: #FFF;
+  background: rgba(51, 51, 51, 0.5);
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.label-arrow {
+  display: table-cell;
+  vertical-align: middle;
+  color: #333;
+  opacity: 0.5;
+}
+
+.float {
+  position: fixed;
+  width: 52px;
+  height: 52px;
+  bottom: 30px;
+  right: 30px;
+  background-color: #F33;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 1000;
+  -webkit-animation: bot-to-top 2s ease-out;
+          animation: bot-to-top 2s ease-out;
+}
+
+ul.floater {
+  position: fixed;
+  right: 30px;
+  padding-bottom: 15px;
+  bottom: 65px;
+  z-index: 100;
+}
+
+ul.floater li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+ul.floater li a {
+  background-color: #F33;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  width: 52px;
+  height: 52px;
+  display: block;
+}
+
+ul.floater:hover {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.my-float {
+  font-size: 22px;
+  margin-top: 15.5px;
+}
+
+a#menu-share + ul.floater {
+  visibility: hidden;
+}
+
+a#menu-share:hover + ul.floater {
+  visibility: visible;
+  -webkit-animation: scale-in 0.5s;
+          animation: scale-in 0.5s;
+}
+
+a#menu-share i {
+  -webkit-animation: rotate-in 0.5s;
+          animation: rotate-in 0.5s;
+}
+
+a#menu-share:hover > i {
+  -webkit-animation: rotate-out 0.5s;
+          animation: rotate-out 0.5s;
+}
+
+@-webkit-keyframes bot-to-top {
+  0% {
+    bottom: -40px;
+  }
+
+  50% {
+    bottom: 40px;
+  }
+}
+
+@keyframes bot-to-top {
+  0% {
+    bottom: -40px;
+  }
+
+  50% {
+    bottom: 40px;
+  }
+}
+
+@-webkit-keyframes scale-in {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes rotate-in {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-in {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotate-out {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate-out {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  vertical-align: top;
+  border-top: 1px solid #e8eef3;
+}
+
+.table thead th,
+.table th {
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.sidebar-nav #sidebarnav .sidebar-item .sidebar-link {
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 30px;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  line-height: 27px;
+  opacity: 0.7;
+  margin-right: 17px;
+  transition: all 0.1s ease;
+}
+
+.topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
+  padding: 0px 15px;
+  font-size: 15px;
+  line-height: 80px;
+}
+
+table.dataTable {
+  margin-top: 16px !important;
+  width: 100% !important;
+}
+
+.table thead tr td {
+  font-weight: 500;
 }
 

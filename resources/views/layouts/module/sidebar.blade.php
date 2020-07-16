@@ -11,13 +11,13 @@
                         aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                             class="hide-menu">Dashboard</span></a></li>
                 <li class="list-divider"></li>
-            
+
             @role('Admin|super-admin')
                 {{-- SETTING --}}
                 <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
 
                 @if (auth()->user()->can('apps-show'))
-                <li class="sidebar-item {{ set_active('apps*') }}"> 
+                <li class="sidebar-item {{ set_active('apps*') }}">
                     <a class="sidebar-link sidebar-link" href="{{ route('apps.index')}}" aria-expanded="false">
                         <i data-feather="edit-3" class="feather-icon"></i>
                         <span class="hide-menu">Apps Setting</span>
@@ -54,7 +54,7 @@
 
             @endrole
 
-                <li class="sidebar-item"> 
+                <li class="sidebar-item">
                     <a class="sidebar-link sidebar-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();" aria-expanded="false">
                         <i data-feather="log-out" class="feather-icon"></i>

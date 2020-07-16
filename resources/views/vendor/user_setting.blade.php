@@ -31,22 +31,29 @@
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" name="name" 
+                    <input type="text" name="name"
                         value="{{ $user->name }}"
                         class="form-control {{ isValid($errors->has('name')) }}" required>
                     <p class="invalid-feedback">{{ $errors->first('name') }}</p>
                 </div>
                 <div class="form-group">
+                    <label for="">Username</label>
+                    <input type="text" name="username"
+                        value="{{ $user->username }}"
+                        class="form-control {{ isValid($errors->has('username')) }}" required readonly>
+                    <p class="invalid-feedback">{{ $errors->first('username') }}</p>
+                </div>
+                <div class="form-group">
                     <label for="">Email</label>
-                    <input type="email" name="email" 
+                    <input type="email" name="email"
                         value="{{ $user->email }}"
-                        class="form-control {{ isValid($errors->has('email')) }}" 
+                        class="form-control {{ isValid($errors->has('email')) }}"
                         required readonly>
                     <p class="invalid-feedback">{{ $errors->first('email') }}</p>
                 </div>
                 <div class="form-group">
                     <label for="">Password</label>
-                    <input type="password" name="password" 
+                    <input type="password" name="password"
                         class="form-control {{ isValid($errors->has('password')) }}">
                     <p class="invalid-feedback">{{ $errors->first('password') }}</p>
                     <p class="text-warning">Biarkan kosong, jika tidak ingin mengganti password</p>

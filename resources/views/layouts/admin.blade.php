@@ -8,18 +8,17 @@
 	<meta name="author" content="Farhan Riuzaki">
 	<meta name="author" content="riuzakif@gmail.com">
     <meta name="keyword" content="aplikasi base administrator">
-    
   	<!-- PERHATIKAN BAGIAN INI, APAPUN YANG DIAPIT OLEH @~SECTION('TITLE') PADA VIEW YANG MENGGUNAKAN MASTER INI, MAKA AKAN ME-REPLACE CODE DIBAWAH -->
   	<!-- TITLE MENJADI KATA KUNCI, JADI JIKA MENGGUNAKAN KEY TITLE PADA @~YIELD, MAKA GUNAKAN KEY TITLE PADA @~SECTION -->
-    
+
     <title>{{ $appSetting->name }} | @yield('title')</title>
 
     <!-- UNTUK ME-LOAD ASSET DARI PUBLIC, KITA GUNAKAN HELPER ASSET() -->
     <link rel="shortcut icon" href="{{asset('storage/images/' . $appSetting->image_icon)}}"/>
-    
+
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    
+    <link href="{{ asset('select2/dist/css/select2.css') }}" rel="stylesheet" />
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <!-- ============================================================== -->
@@ -31,29 +30,29 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
         <!-- @//INCLUDE SAMA DENGAN FUNGSI INCLUDE DI PHP, HANYA SAJA PENULISAN DIBLADE MENJADI @//INCLUDE, BERARTI KITA ME-LOAD FILE LAINNYA -->
         <!-- KENAPA HEADER DIPISAHKAN? AGAR LEBIH RAPI SAJA JADI LEBIH MUDAH MAINTENANCENYA -->
         <!-- KETIKA MELOAD FILE BLADE, MAKA EKSTENSI .BLADE.PHP TIDAK PERLU DITULISKAN -->
         @include('layouts.module.header')
-    
-    
+
+
         <!-- SIDEBAR JUGA KITA PISAHKAN CODENYA MENJADI FILE TERSENDIRI -->
         <!-- KETIKA MELOAD FILE BLADE, MAKA EKSTENSI .BLADE.PHP TIDAK PERLU DITULISKAN -->
         @include('layouts.module.sidebar')
 
         <div class="page-wrapper">
-        
+
             <!-- BAGIAN INI AKAN DI-REPLACE SESUAI ISI YANG DIAPIT DARI @/SECTION('CONTENT') -->
             @yield('content')
-        
+
             <footer class="footer text-center text-muted">
-                2020 © Farhan Riuzaki. 
+                2020 © Farhan Riuzaki.
             </footer>
         </div>
-    
+
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 
@@ -70,14 +69,15 @@
     <script src="{{ asset('adminart/src/dist/js/sidebarmenu.js') }}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('adminart/src/dist/js/custom.min.js') }}"></script>
+    <script src="{{ asset('select2/dist/js/select2.js') }}"></script>
     @include('sweet::alert')
 
     @yield('js')
-    
+
     <script src="{{ asset('js/custom.js') }}"></script>
     <script>
         // START DYNAMIS TEMA
-        $(function () {  
+        $(function () {
             document.documentElement.setAttribute('theme', '{{  $appSetting->theme }}');
         });
         $('body').on('click', '#light' , function(){
@@ -119,11 +119,11 @@
 
 
         // FUNGSI DELETE DENGAN AJAX ALL FORM
-        $('body').on('click', '.btn-delete', function (e) { 
+        $('body').on('click', '.btn-delete', function (e) {
             e.preventDefault();
             var url = $(this).data('remote');
 
-            swal.fire({ 
+            swal.fire({
             title: 'Are you sure?',
             text: "It will permanently deleted !",
             icon: 'warning',
@@ -139,18 +139,18 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-                    
+
                     // confirm then
                     $.ajax({
                         url: url,
                         type: 'POST',
                         dataType: 'json',
                         data: {
-                            _method: 'DELETE', 
+                            _method: 'DELETE',
                             submit: true,
                             _token: "{{ csrf_token() }}",
                         },
-                        success: function (param) {  
+                        success: function (param) {
                             if(param.code == 'success'){
                                 swal.fire('Berhasil', param.msg, param.code)
                             }
@@ -163,9 +163,9 @@
                             }else{
                                 window.location.reload();
                             }
-                            
+
                         },
-                        error: function (param) {  
+                        error: function (param) {
                             swal.fire('Oops', 'Terjadi kesalahan', 'error')
                         }
                     })

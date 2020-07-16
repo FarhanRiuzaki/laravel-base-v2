@@ -6,37 +6,41 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">{{ @$header }}</li>
+                        @if (@$custom_header)
+                            {!! $custom_header !!}
+                        @else
+                            <li class="breadcrumb-item active">{{ @$header }}</li>
+                        @endif
                     </ol>
                 </nav>
             </div>
         </div>
-        @if (@$add_route)
-            @php
-                $route = $add_route->__toString();
-            @endphp
-            @if ($route)
-                @php
-                    $data = $route;    
-                    $type = substr($data, strpos($data, ".") + 1);    
-                    // dd($type);
-                @endphp
-                @if ($type == 'create')
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
+        <div class="col-5 align-self-center">
+            <div class="customize-input float-right">
+                @if (@$add_route)
+                    @php
+                        $route = $add_route->__toString();
+                    @endphp
+                    @if ($route)
+                        @php
+                            $data = $route;
+                            $type = substr($data, strpos($data, ".") + 1);
+                            // dd($type);
+                        @endphp
+                        @if ($type == 'create')
                             <a href="{{  route($route)  }}" class="btn btn-primary custom-radius text-center"><span class="fas fa-plus"></span> Tambah Data</a>
-                        </div>
-                    </div>
-                @endif
+                        @endif
 
-                @if ($type == 'index')
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
+                        @if ($type == 'index')
                             <a href="{{  route($route)  }}" class="btn btn-warning custom-radius text-center"><span class="fas fa-angle-double-left"></span> Kembali</a>
-                        </div>
-                    </div>
+                            {{-- <a href="{{  URL::previous()  }}" class="btn btn-warning custom-radius text-center"><span class="fas fa-angle-double-left"></span> Kembali</a> --}}
+                        @endif
+                    @endif
                 @endif
-            @endif
-        @endif
+                @if (@$custom_button)
+                    {{ $custom_button }}
+                @endif
+            </div>
+        </div>
     </div>
 </div>

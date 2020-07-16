@@ -39,6 +39,13 @@
                     <p class="invalid-feedback">{{ $errors->first('name') }}</p>
                 </div>
                 <div class="form-group">
+                    <label for="">Username</label>
+                    <input type="text" name="username"
+                    value="{{ $user->username }}"
+                     class="form-control {{ isValid($errors->has('username')) }}"  value="{{ old('username') }}" readonly>
+                    <p class="invalid-feedback">{{ $errors->first('username') }}</p>
+                </div>
+                <div class="form-group">
                     <label for="">Email</label>
                     <input type="email" name="email" 
                         value="{{ $user->email }}"
@@ -50,9 +57,16 @@
                     <label for="">Password</label>
                     <input type="password" name="password" 
                         class="form-control {{ isValid($errors->has('password')) }}">
-                    <p class="invalid-feedback">{{ $errors->first('password') }}</p>
+                    <p class="invalid-feedback">
+                        @if ($errors->first('password'))
+                            The password must be at least 6 character should contain at least 3 of a-z or A-Z and number and special character.
+                        @endif
+                        {{-- {{ $errors->first('password') }} --}}
+                    </p>
                     <p class="text-warning">Biarkan kosong, jika tidak ingin mengganti password</p>
                 </div>
+                {{ Form::inputSelect('Cabang', 'branch', $branch, null,[],$user->branch) }}
+
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="customCheck1" name="status" {{ $user->status == '1' ? 'checked' : '' }}>
                     <label class="custom-control-label" for="customCheck1">Status</label>

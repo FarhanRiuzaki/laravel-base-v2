@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\View;
 use Form;
 use Illuminate\Support\Facades\Blade;
 use DebugBar;
+use SweetAlert;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 
     /**
@@ -41,7 +42,9 @@ class AppServiceProvider extends ServiceProvider
         Form::component('inputTextarea', 'components.form.textarea',        ['label', 'name', 'value' => null, 'class',  'attributes' => []]);
         Form::component('inputTextareaRow', 'components.form.textareaRow',  ['label', 'name', 'value' => null, 'class',  'attributes' => []]);
         Form::component('inputNumber', 'components.form.number',            ['label', 'name', 'value' => null, 'class',  'attributes' => []]);
+
         Form::component('inputSelect', 'components.form.select',            ['label', 'name', 'value' => [],  'class', 'attributes' => [], 'default' => null]);
+        Form::component('inputSelectRow', 'components.form.selectRow',            ['label', 'name', 'value' => [],  'class', 'attributes' => [], 'default' => null]);
         
         // DEFINE CARD
         Blade::component('components.card', 'card');
@@ -50,4 +53,5 @@ class AppServiceProvider extends ServiceProvider
 
         View::share('appSetting', $appSetting);
     }
+    
 }

@@ -42,13 +42,22 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email'     => 'required|email',
+            'email'     => 'required',
             'password'  => 'required|string'
         ]);
-    
-        if (auth()->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1])) {
-            return redirect()->intended('administrator/home');
+
+        // cek jika yang di input email
+        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            if (auth()->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1])) {
+                return redirect()->intended('administrator/home');
+            }
+        } else {
+            if (auth()->attempt(['username' => $request->email, 'password' => $request->password, 'status' => 1])) {
+                return redirect()->intended('administrator/home');
+            }
         }
+
+        
         return redirect()->back()->with(['error' => 'Password Invalid / Inactive Users']);
     }
 }

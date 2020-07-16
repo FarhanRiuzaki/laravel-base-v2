@@ -15,16 +15,16 @@ function pad (str, max) {
 
 // validasi file upload
 function fileCheck(file,size, file_type = []) {
-  
+
   file_name   = file.files[0].name;
   size        = file.files[0].size / 1024;
   limit       = 1024 * size;
   validExtensions = file_type;
 
   extension   = file_name.substr( (file_name.lastIndexOf('.') + 1) );
-  
+
   // change_name = file_name.split('.').shift() + '' + parseInt(Math.random() * 10000) + '.' + extension;
-  
+
   // file.name = change_name;
 
   valid = true;
@@ -40,14 +40,28 @@ function fileCheck(file,size, file_type = []) {
 
 }
 
+function number_format(nStr)
+{
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+
 // deklarasi function
-window.pad        = pad;
-window.fileCheck  = fileCheck;
+window.pad              = pad;
+window.fileCheck        = fileCheck;
+window.number_format    = number_format;
 
 // COMPONENT
 $('.number').number(true, 2);
 // $('.numberOnly').number(true);
-$(".numberOnly").on("keypress keyup blur",function (event) {    
+$(".numberOnly").on("keypress keyup blur",function (event) {
   $(this).val($(this).val().replace(/[^\d].+/, ""));
    if ((event.which < 48 || event.which > 57)) {
        event.preventDefault();

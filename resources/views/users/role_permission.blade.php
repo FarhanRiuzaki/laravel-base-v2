@@ -92,13 +92,13 @@
                                             <div class="tab-pane active" id="tab_1">
                                                 @php $no = 1; @endphp
                                                 @foreach ($permissions as $key => $row)
-                                                    <input type="checkbox" 
-                                                        name="permission[]" 
-                                                        class="minimal-red" 
+                                                    <input type="checkbox"
+                                                        name="permission[]"
+                                                        class="minimal-red"
                                                         value="{{ $row }}"
                                                         {{--  CHECK, JIKA PERMISSION TERSEBUT SUDAH DI SET, MAKA CHECKED --}}
                                                         {{ in_array($row, $hasPermission) ? 'checked':'' }}
-                                                        > {{ $row }} <br>   
+                                                        > {{ $row }} <br>
                                                     @if ($no++%4 == 0)
                                                     <br>
                                                     @endif
@@ -107,7 +107,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="pull-left">
                                     <button class="btn btn-primary btn-sm">
                                         <i class="fa fa-send"></i> Set Permission

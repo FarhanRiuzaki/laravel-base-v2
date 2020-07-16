@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'status'
+        'name', 'email', 'password', 'status', 'username', 'branch'
     ];
 
     /**
@@ -38,4 +38,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
+    public static function rules($id = '') {
+        return [
+            'name'      => 'required|string|max:100',
+            'email'     => 'required|email|unique:users',
+            'username'  => 'required|unique:users',
+            'password'  => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|confirmed',
+            'role'      => 'required|string|exists:roles,name'
+        ];
+    }
+
 }

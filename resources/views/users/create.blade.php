@@ -35,6 +35,11 @@
                     <p class="invalid-feedback">{{ $errors->first('name') }}</p>
                 </div>
                 <div class="form-group">
+                    <label for="">Username</label>
+                    <input type="text" name="username" class="form-control {{ isValid($errors->has('username')) }}"  value="{{ old('username') }}" required>
+                    <p class="invalid-feedback">{{ $errors->first('username') }}</p>
+                </div>
+                <div class="form-group">
                     <label for="">Email</label>
                     <input type="email" name="email" class="form-control {{ isValid($errors->has('email')) }}"  value="{{ old('email') }}" required>
                     <p class="invalid-feedback">{{ $errors->first('email') }}</p>
@@ -42,8 +47,15 @@
                 <div class="form-group">
                     <label for="">Password</label>
                     <input type="password" name="password" class="form-control {{ isValid($errors->has('password')) }}" required>
-                    <p class="invalid-feedback">{{ $errors->first('password') }}</p>
+                    <p class="invalid-feedback">
+                        @if ($errors->first('password'))
+                            The password must be at least 6 character should contain at least 3 of a-z or A-Z and number and special character.
+                        @endif
+                        {{-- {{ $errors->first('password') }} --}}
+                    </p>
                 </div>
+                {{ Form::inputSelect('Cabang', 'branch', $branch) }}
+
                 <div class="form-group">
                     <label for="">Role</label>
                     <select name="role" class="form-control {{ isValid($errors->has('role')) }}" required>

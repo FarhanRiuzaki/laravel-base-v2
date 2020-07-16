@@ -58,24 +58,24 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label class="text-default" style="font-size: 12px" for="uname">Email</label>
+                                        <label class="text-default" style="font-size: 12px" for="uname">Username</label>
                                         <!-- $errors->has('email') AKAN MENGECEK JIKA ADA ERROR DARI HASIL VALIDASI LARAVEL, SEMUA KEGAGALAN VALIDASI LARAVEL AKAN DISIMPAN KEDALAM VARIABLE $errors -->
-                                        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" 
-                                        type="text" 
+                                        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                        type="text"
                                         name="email"
-                                        placeholder="Email Address" 
-                                        value="{{ old('email') }}" 
-                                        autofocus 
+                                        placeholder="Username"
+                                        value="{{ old('email') }}"
+                                        autofocus
                                         required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="text-default" style="font-size: 12px" for="pwd">Password</label>
-                                        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" 
-                                        type="password" 
+                                        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                        type="password"
                                         name="password"
-                                        placeholder="Password" 
+                                        placeholder="Password"
                                         required>
                                     </div>
                                 </div>
